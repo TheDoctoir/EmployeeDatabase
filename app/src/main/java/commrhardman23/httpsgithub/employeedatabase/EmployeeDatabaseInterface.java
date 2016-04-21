@@ -1,6 +1,9 @@
 package commrhardman23.httpsgithub.employeedatabase;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -32,7 +35,7 @@ public class EmployeeDatabaseInterface extends AppCompatActivity {
      * insertData adds elements to the Employee database using information given by the user
      * @param vw is the button the method is associated with
      */
-    private void insertData(View vw){
+    public void insertData(View vw) {
 
         /**
          * 1. Create a new EmployeeDatabaseHelper variable. You will need to use the following call:
@@ -43,30 +46,67 @@ public class EmployeeDatabaseInterface extends AppCompatActivity {
          *    try-catch block. The if-else statement that follows should also go in your try block).
          */
 
-        if(edtxtName.getText().length() == 0 || edtxtPosition.getText().length() == 0 ||
-                edtxtEmployeeNum.getText().length() == 0 || edtxtWage.getText().length() == 0){
+        EmployeeDatabaseHelper employeeDatabaseHelper = new EmployeeDatabaseHelper(this, null, null, 0);
+        SQLiteDatabase db;
+        String name;
+        String wage;
+        String position;
+        String employeeNumber;
+        ContentValues contentValues;
 
-            txtvwResult.setText("You must enter all values to add an element!");
+        try {
+            db = employeeDatabaseHelper.getWritableDatabase();
+            if (edtxtName.getText().length() == 0 || edtxtPosition.getText().length() == 0 ||
+                    edtxtEmployeeNum.getText().length() == 0 || edtxtWage.getText().length() == 0) {
 
-        } else {
+                txtvwResult.setText("You must enter all values to add an element!");
 
-            /**
-             * 1. Set each variable equal to the values from the EditTexts
-             * 2. put each value into the ContentValues variable
-             * 3. Call the EmployeeDatabaseHelper's insertElement method
-             * 4. Display that the element has been added successfully
-             */
 
-        }
+
+            } else {
+
+
+                wage = edtxtWage.getText().toString();
+                position = edtxtPosition.getText().toString();
+                employeeNumber = edtxtEmployeeNum.getText().toString();
+                name = edtxtName.getText().toString();
+
+                contentValues = new ContentValues();
+                contentValues.put("WAGE", name);
+                contentValues.put("POSITION", position);
+                contentValues.put("EMPLOYEE_NUM", employeeNumber);
+                contentValues.put("WAGE", wage);
+
+                db
+
+                txtvwResult.setText("You have added it successfully.");
+
+                /**
+                 * 1. Set each variable equal to the values from the EditTexts
+                 * 2. put each value into the ContentValues variable
+                 * 3. Call the EmployeeDatabaseHelper's insertElement method
+                 * 4. Display that the element has been added successfully
+                 */
+
+            }
+
+        } catch (SQLiteException e) {
+            txtvwResult.setText("Not found.");
+            edtxtName.setText("Not Found.");
+            edtxtEmployeeNum.setText("Not Found.");
+            edtxtPosition.setText("Not Found.");
+            edtxtWage.setText("Not Found.");
+          }
 
     }
+
 
     /**
      * searchOrDelete opens the new activity where the user will be able to search or delete entries
      * in the Employee database
      * @param vw is the button that is associated with this method
      */
-    private void searchOrDelete(View vw){
+    public void searchOrDelete(View vw){
 
         Intent goToSearchDelete = new Intent(this, SearchDatabase.class);
 
