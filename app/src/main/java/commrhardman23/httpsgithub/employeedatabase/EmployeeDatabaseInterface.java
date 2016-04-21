@@ -77,7 +77,7 @@ public class EmployeeDatabaseInterface extends AppCompatActivity {
                 contentValues.put("EMPLOYEE_NUM", employeeNumber);
                 contentValues.put("WAGE", wage);
 
-                db
+                db.insert("IT'S NOT GETTING IT FROM EMPLOYEEDATABASEHELPER.java, IDK WHY)
 
                 txtvwResult.setText("You have added it successfully.");
 
