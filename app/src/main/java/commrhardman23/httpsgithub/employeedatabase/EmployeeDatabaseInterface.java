@@ -70,7 +70,7 @@ public class EmployeeDatabaseInterface extends AppCompatActivity {
                 name = edtxtName.getText().toString();
 
                 contentValues = new ContentValues();
-                contentValues.put("WAGE", name);
+                contentValues.put("NAME", name);
                 contentValues.put("POSITION", position);
                 contentValues.put("EMPLOYEE_NUM", employeeNumber);
                 contentValues.put("WAGE", wage);
