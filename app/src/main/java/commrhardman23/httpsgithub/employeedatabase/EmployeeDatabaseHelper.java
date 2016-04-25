@@ -31,7 +31,7 @@ public class EmployeeDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE EMPLOYEE (_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "NAME TEXT, " +
                 "POSITION TEXT, " +
-                "EMPLOYEE_NUM INTEGER " +
+                "EMPLOYEE_NUM INTEGER, " +
                 "WAGE REAL);");
     }
 

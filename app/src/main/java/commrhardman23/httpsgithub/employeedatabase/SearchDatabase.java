@@ -168,7 +168,7 @@ public class SearchDatabase extends AppCompatActivity {
                     for (int i = 0; i < searchCursor.getCount(); i++) {
 
                         txtvwResult.setText(txtvwResult.getText().toString() +
-                                String.format("Name: %-35s Position %s\nEmployee Number: %-16d" +
+                                String.format("Name: %-35s Position: %s\nEmployee Number: %-16d" +
                                                 " Wage: %.2f\n", searchCursor.getString(0),
                                         searchCursor.getString(1), searchCursor.getInt(2),
                                         searchCursor.getDouble(3)));
