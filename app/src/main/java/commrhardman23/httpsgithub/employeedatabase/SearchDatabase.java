@@ -155,7 +155,7 @@ public class SearchDatabase extends AppCompatActivity {
 
             employeeDatabaseHelper = new EmployeeDatabaseHelper(this, null, null, 0);
             db = employeeDatabaseHelper.getReadableDatabase();
-            searchCursor = db.query("EMPLOYEE", new String[]{"NAME, POSITION, WAGE, EMPLOYEE_NUM"}, whereToSearch, elementsToSearch, null, null, null);
+            searchCursor = db.query("EMPLOYEE", new String[]{"NAME", "POSITION", "EMPLOYEE_NUM", "WAGE"}, whereToSearch, elementsToSearch, null, null, null);
 
             if (searchCursor.getCount() == 0) {
 
