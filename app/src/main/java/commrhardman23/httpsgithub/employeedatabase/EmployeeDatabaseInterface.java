@@ -88,6 +88,8 @@ public class EmployeeDatabaseInterface extends AppCompatActivity {
 
             }
 
+            db.close();
+
         } catch (SQLiteException e) {
             txtvwResult.setText("Not found.");
             edtxtName.setText("Not Found.");

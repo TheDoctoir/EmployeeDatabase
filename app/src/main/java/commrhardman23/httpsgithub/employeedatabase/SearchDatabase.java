@@ -153,8 +153,8 @@ public class SearchDatabase extends AppCompatActivity {
 
         try {
 
-            SQLiteOpenHelper EmployeeDatabaseHelper = new EmployeeDatabaseHelper(this, null, null, 0);
-            db = EmployeeDatabaseHelper.getReadableDatabase();
+            employeeDatabaseHelper = new EmployeeDatabaseHelper(this, null, null, 0);
+            db = employeeDatabaseHelper.getReadableDatabase();
             searchCursor = db.query("EMPLOYEE", new String[]{"NAME, POSITION, WAGE, EMPLOYEE_NUM"}, whereToSearch, elementsToSearch, null, null, null);
 
             if (searchCursor.getCount() == 0) {
@@ -179,8 +179,9 @@ public class SearchDatabase extends AppCompatActivity {
                     }
 
                 }
-             }
+            }
 
+            searchCursor.close();
 
         } catch (SQLiteException e) {
 
@@ -309,10 +310,13 @@ public class SearchDatabase extends AppCompatActivity {
             numRowsDeleted = employeeDatabaseHelper.deleteElement(db, whereToDelete, elementsToDelete);
             txtvwResult.setText("Number of rows deleted is..." + Integer.toString(numRowsDeleted));
 
+            db.close();
+
         } catch (SQLiteException e){
             txtvwResult.setText("The database cannot be found.");
         }
 
     }
+
 
 }
