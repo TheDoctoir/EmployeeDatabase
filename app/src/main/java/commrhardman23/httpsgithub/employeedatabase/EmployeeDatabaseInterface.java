@@ -61,8 +61,6 @@ public class EmployeeDatabaseInterface extends AppCompatActivity {
 
                 txtvwResult.setText("You must enter all values to add an element!");
 
-
-
             } else {
 
 
@@ -77,7 +75,7 @@ public class EmployeeDatabaseInterface extends AppCompatActivity {
                 contentValues.put("EMPLOYEE_NUM", employeeNumber);
                 contentValues.put("WAGE", wage);
 
-                db.insert("IT'S NOT GETTING IT FROM EMPLOYEEDATABASEHELPER.java, IDK WHY)
+                employeeDatabaseHelper.insertElement(db,contentValues);
 
                 txtvwResult.setText("You have added it successfully.");
 
@@ -124,3 +122,7 @@ public class EmployeeDatabaseInterface extends AppCompatActivity {
 
     }
 }
+
+
+
+//Allegorize the war on drugs via superheroes.
